@@ -6,7 +6,7 @@ function parseGrpc(obj) {
     obj,
     (k, v) => {
       if (v instanceof Uint8Array) {
-        try { return oasis.misc.fromCBOR(v) } catch (err) {}
+        try { return { as_CBOR: oasis.misc.fromCBOR(v) } } catch (err) {}
         if (['rate', 'rate_min', 'rate_max'].includes(k)) return utils.formatUnits(v, 3) + '%';
         if (v.length === 21) return oasis.staking.addressToBech32(v)
         if (v.length === 32) return oasis.staking.addressToBech32(oasis.address.fromData('oasis-core/address: staking', 0, v)) + ' or ' + oasis.misc.toHex(v)
@@ -15,7 +15,7 @@ function parseGrpc(obj) {
         return utils.commify(utils.formatUnits(v, 9))
       }
       if (typeof v === 'bigint') return v.toString()
-      if (v instanceof Map) return [...v.entries()]
+      if (v instanceof Map) return { as_Map: [...v.entries()] }
       return v
     },
     2
