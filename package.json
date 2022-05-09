@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "alias": {
+    "process": false
+  },
+  "dependencies": {
+    "@oasisprotocol/client": "^0.1.0-alpha8",
+    "ethers": "^5.5.4",
+    "parcel": "^2.5.0"
+  }
+}
