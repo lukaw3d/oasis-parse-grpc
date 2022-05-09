@@ -1,5 +1,9 @@
-import {parseGrpcFromBase64} from './parseGrpc'
+import {parseCborFromBase64, parseGrpc} from './parseGrpc'
 
+function loadInputFromHash() {
+  const rawLines = decodeURIComponent(location.hash.replace(/^#/, ''))
+  if (rawLines) window.base64lines.value = rawLines
+}
 
 function parse() {
   try {
@@ -17,5 +21,10 @@ function parse() {
     window.parsed.textContent = e
   }
 }
-window.base64lines.addEventListener('input', parse);
-parse();
+window.base64lines.addEventListener('input', () => {
+  location.hash = encodeURIComponent(window.base64lines.value)
+  parse()
+})
+
+loadInputFromHash()
+parse()
