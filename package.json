@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "gh": "yarn build && cd ./dist && git init && git add -A && git commit -m 'deploy' && git push -f git@github.com:lukaw3d/oasis-parse-grpc.git master:gh-pages && cd -"
   },
   "alias": {
     "process": false
@@ -9,5 +11,10 @@
     "@oasisprotocol/client": "^0.1.0-alpha8",
     "ethers": "^5.5.4",
     "parcel": "^2.5.0"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "stream-browserify": "^3.0.0"
   }
 }
