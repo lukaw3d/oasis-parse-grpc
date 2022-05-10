@@ -4,6 +4,14 @@
     "build": "parcel build index.html",
     "gh": "yarn build && cd ./dist && git init && git add -A && git commit -m 'deploy' && git push -f git@github.com:lukaw3d/oasis-parse-grpc.git master:gh-pages && cd -"
   },
+  "targets": {
+    "default": {
+      "optimize": false,
+      "sourceMap": false,
+      "scopeHoist": false,
+      "publicUrl": "/oasis-parse-grpc"
+    }
+  },
   "alias": {
     "process": false
   },
