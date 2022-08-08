@@ -2,6 +2,7 @@ const oasis = require('@oasisprotocol/client');
 const {utils, BigNumber} = require('ethers');
 
 function parseGrpc(obj) {
+  if (obj == null) return '' + obj
   return JSON.parse(JSON.stringify(
     obj,
     (k, v) => {
