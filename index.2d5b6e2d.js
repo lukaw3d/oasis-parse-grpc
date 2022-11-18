@@ -144,6 +144,15 @@
   }
 })({"bdCoo":[function(require,module,exports) {
 var _parseGrpc = require("./parseGrpc");
+var _client = require("@oasisprotocol/client");
+window.oasis = _client;
+window.parseCborFromBase64 = _parseGrpc.parseCborFromBase64;
+window.parseGrpc = _parseGrpc.parseGrpc;
+console.log({
+    oasis: _client,
+    parseCborFromBase64: _parseGrpc.parseCborFromBase64,
+    parseGrpc: _parseGrpc.parseGrpc
+});
 function loadInputFromHash() {
     const rawLines = decodeURIComponent(location.hash.replace(/^#/, ''));
     if (rawLines) window.base64lines.value = rawLines;
@@ -176,7 +185,7 @@ window.base64lines.addEventListener('input', ()=>{
 loadInputFromHash();
 parse();
 
-},{"./parseGrpc":"dNuRz"}],"dNuRz":[function(require,module,exports) {
+},{"./parseGrpc":"dNuRz","@oasisprotocol/client":"536BO"}],"dNuRz":[function(require,module,exports) {
 const oasis = require('@oasisprotocol/client');
 const { utils , BigNumber  } = require('ethers');
 function parseGrpc(obj) {
@@ -439,8 +448,8 @@ async function hash(data) {
 exports.hash = hash;
 
 },{"js-sha512":"33W8e"}],"33W8e":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 /*
  * [js-sha512]{@link https://github.com/emn178/js-sha512}
  *
@@ -12943,8 +12952,8 @@ exports.pipeline = require('./lib/internal/streams/pipeline.js');
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 'use strict';
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 module.exports = Readable;
 /*<replacement>*/ var Duplex;
 /*</replacement>*/ Readable.ReadableState = ReadableState;
@@ -17623,8 +17632,8 @@ module.exports = function(iterations, keylen) {
 };
 
 },{}],"lyDqi":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 var defaultEncoding;
 /* istanbul ignore next */ if (global.process && global.process.browser) defaultEncoding = 'utf-8';
 else if (global.process && global.process.version) {
@@ -17737,8 +17746,8 @@ module.exports = function(thing, encoding, name) {
 
 },{"safe-buffer":"4WLFd"}],"5dXXm":[function(require,module,exports) {
 'use strict';
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 // limit of Crypto.getRandomValues()
 // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
 var MAX_BYTES = 65536;
