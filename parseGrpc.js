@@ -24,6 +24,10 @@ function parseGrpc(obj) {
 }
 
 function parseCborFromBase64(base64data) {
+  try {
+    return [oasis.misc.fromCBOR(oasis.misc.fromBase64(base64data))]
+  } catch (e) {}
+
   // Split multiple base64s; hopefully gAAAA is a good delimiter. `/(?=...)/g` keeps the delimiter after splitting.
   var [cborPart, ...otherParts] = base64data.split(/(?=gAAAA)/g)
 
