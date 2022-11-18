@@ -1,4 +1,10 @@
 import {parseCborFromBase64, parseGrpc} from './parseGrpc'
+import * as oasis from '@oasisprotocol/client'
+
+window.oasis = oasis
+window.parseCborFromBase64 = parseCborFromBase64
+window.parseGrpc = parseGrpc
+console.log({ oasis, parseCborFromBase64, parseGrpc })
 
 function loadInputFromHash() {
   const rawLines = decodeURIComponent(location.hash.replace(/^#/, ''))
