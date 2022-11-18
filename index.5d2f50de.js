@@ -209,6 +209,11 @@ function parseGrpc(obj) {
     }, 2));
 }
 function parseCborFromBase64(base64data) {
+    try {
+        return [
+            oasis.misc.fromCBOR(oasis.misc.fromBase64(base64data))
+        ];
+    } catch (e) {}
     // Split multiple base64s; hopefully gAAAA is a good delimiter. `/(?=...)/g` keeps the delimiter after splitting.
     var [cborPart, ...otherParts] = base64data.split(/(?=gAAAA)/g);
     return [
@@ -12938,8 +12943,8 @@ exports.pipeline = require('./lib/internal/streams/pipeline.js');
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 'use strict';
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 module.exports = Readable;
 /*<replacement>*/ var Duplex;
 /*</replacement>*/ Readable.ReadableState = ReadableState;
@@ -17618,8 +17623,8 @@ module.exports = function(iterations, keylen) {
 };
 
 },{}],"lyDqi":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 var defaultEncoding;
 /* istanbul ignore next */ if (global.process && global.process.browser) defaultEncoding = 'utf-8';
 else if (global.process && global.process.version) {
@@ -17732,8 +17737,8 @@ module.exports = function(thing, encoding, name) {
 
 },{"safe-buffer":"4WLFd"}],"5dXXm":[function(require,module,exports) {
 'use strict';
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 // limit of Crypto.getRandomValues()
 // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
 var MAX_BYTES = 65536;
@@ -24908,8 +24913,8 @@ function keccak256(data) {
 }
 
 },{"js-sha3":"x752T","@ethersproject/bytes":"8APJ6","@parcel/transformer-js/src/esmodule-helpers.js":"j7FRh"}],"x752T":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
  *
