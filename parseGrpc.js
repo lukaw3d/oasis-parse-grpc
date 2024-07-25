@@ -49,6 +49,8 @@ function annotateKnown(str) {
     'oasis1qr629x0tg9gm5fyhedgs9lw5eh3d8ycdnsxf0run': 'Emerald Testnet',
     'oasis1qrnu9yhwzap7rqh6tdcdcpz0zf86hwhycchkhvt8': 'Cipher Mainnet',
     'oasis1qqdn25n5a2jtet2s5amc7gmchsqqgs4j0qcg5k0t': 'Cipher Testnet',
+    'oasis1qrg6c89655pmdxeel08qkngs02jnrfll5v9c508v': 'Pontus-X Testnet',
+    'oasis1qr02702pr8ecjuff2z3es254pw9xl6z2yg9qcc6c': 'Pontus-X Devnet',
 
     'oasis1qz78phkdan64g040cvqvqpwkplfqf6tj6uwcsh30': 'ParaTime Common Pool',
     'oasis1qp3r8hgsnphajmfzfuaa8fhjag7e0yt35cjxq0u4': 'ParaTime Fee Accumulator',
@@ -63,8 +65,8 @@ function annotateKnown(str) {
     '0000000000000000000000000000000000000000000000000000000000000000': 'maybe Cipher Testnet',
     '000000000000000000000000000000000000000000000000f80306c9858e7279': 'Sapphire Mainnet',
     '000000000000000000000000000000000000000000000000a6d1e3ebf60dff6c': 'Sapphire Testnet',
-    '0000000000000000000000000000000000000000000000004febe52eb412b421': 'PontusX Devnet',
-    '00000000000000000000000000000000000000000000000004a6f9071c007069': 'PontusX Testnet',
+    '00000000000000000000000000000000000000000000000004a6f9071c007069': 'Pontus-X Testnet',
+    '0000000000000000000000000000000000000000000000004febe52eb412b421': 'Pontus-X Devnet',
   }
   if (str === 'oasis1xtnxq8') return '?'
 
