@@ -73,4 +73,8 @@ function annotateKnown(str) {
   return str + (knownStrings[str] ? ' ' + knownStrings[str] : '')
 }
 
-module.exports = {parseGrpc, parseCborFromBase64}
+function out(obj) {
+  console.dir(parseGrpc(obj), { depth: null, compact: true })
+}
+
+module.exports = {parseGrpc, parseCborFromBase64, out}
