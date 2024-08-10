@@ -1,5 +1,28 @@
 const oasis = require('@oasisprotocol/client');
 const {utils, BigNumber} = require('ethers');
+const { sha512_256 } = require('js-sha512');
+
+/**
+ * oasis.address.fromData(...) but without being needlessly asynchronous
+ *
+ * @param {string} contextIdentifier
+ * @param {number} contextVersion
+ * @param {Uint8Array} data
+ * @returns {Uint8Array}
+ */
+function oasisAddressFromDataSync(
+  contextIdentifier,
+  contextVersion,
+  data,
+) {
+  const versionU8 = new Uint8Array([contextVersion])
+  return oasis.misc.concat(
+    versionU8,
+    new Uint8Array(
+      sha512_256.arrayBuffer(oasis.misc.concat(oasis.misc.fromString(contextIdentifier), versionU8, data)),
+    ).slice(0, 20),
+  )
+}
 
 function parseGrpc(obj) {
   if (obj == null) return '' + obj
@@ -10,7 +33,7 @@ function parseGrpc(obj) {
         try { return { as_CBOR: oasis.misc.fromCBOR(v) } } catch (err) {}
         if (['rate', 'rate_min', 'rate_max'].includes(k)) return utils.formatUnits(v, 3) + '%';
         if (v.length === 21) return annotateKnown(oasis.staking.addressToBech32(v))
-        if (v.length === 32) return annotateKnown(oasis.staking.addressToBech32(oasis.address.fromData('oasis-core/address: staking', 0, v))) + ' or ' + annotateKnown(oasis.misc.toHex(v))
+        if (v.length === 32) return annotateKnown(oasis.staking.addressToBech32(oasisAddressFromDataSync('oasis-core/address: staking', 0, v))) + ' or ' + annotateKnown(oasis.misc.toHex(v))
         if (v.length > 32) return annotateKnown(oasis.misc.toHex(v))
         if (v.length === 0) return '[]'
         return utils.commify(utils.formatUnits(v, 9))
