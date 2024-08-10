@@ -68,7 +68,7 @@ function annotateKnown(str) {
     '00000000000000000000000000000000000000000000000004a6f9071c007069': 'Pontus-X Testnet',
     '0000000000000000000000000000000000000000000000004febe52eb412b421': 'Pontus-X Devnet',
   }
-  if (str === 'oasis1xtnxq8') return '?'
+  if (str === 'oasis1xtnxq8') return '?forgot to await oasis.address.fromData?'
 
   return str + (knownStrings[str] ? ' ' + knownStrings[str] : '')
 }
